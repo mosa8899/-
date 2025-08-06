@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حالة الطلبات</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='orders_status.css') }}">
+    <!-- إضافة الأصوات للإشعارات -->
+    <audio id="new-order-sound" preload="auto">
+        <source src="{{ url_for('static', filename='notification.mp3') }}" type="audio/mpeg">
+    </audio>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1 id="restaurant-name">حالة الطلبات</h1>
+            <button onclick="window.location.href='/'" class="menu-button">الصفحة الرئيسية</button>
+        </div>
+    </header>
+
+    <div class="search-container">
+        <div class="search-box">
+            <input type="number" id="order-search" placeholder="أدخل رقم الطلبية للبحث" min="1">
+            <button id="search-button">بحث</button>
+        </div>
+    </div>
+
+    <div class="status-container" id="status-container">
+        <div class="status-section">
+            <div class="section-header">
+                <h2>قيد التجهيز <span id="in-progress-count" class="orders-count">0</span></h2>
+            </div>
+            <div id="in-progress-orders" class="orders-grid"></div>
+        </div>
+        
+        <div class="status-section">
+            <div class="section-header">
+                <h2>تم التجهيز <span id="completed-count" class="orders-count">0</span></h2>
+            </div>
+            <div id="completed-orders" class="orders-grid"></div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='orders_status.js') }}"></script>
+</body>
+</html>

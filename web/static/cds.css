@@ -1,0 +1,681 @@
+/* تنسيقات شاشة عرض العميل (CDS) */
+
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Tajawal', sans-serif;
+}
+
+body {
+    direction: rtl;
+    font-family: 'Tajawal', Tahoma, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #0a1128;
+    color: #fff;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background-image: linear-gradient(135deg, #0a1128 0%, #1e2761 100%);
+    position: relative;
+}
+
+/* تأثير الخلفية المتحركة */
+.background-effect {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.particle {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    animation: float 15s infinite linear;
+}
+
+header {
+    background-color: rgba(22, 33, 62, 0.8);
+    color: #fff;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 0 10px rgba(233, 69, 96, 0.8);
+    position: relative;
+    display: inline-block;
+}
+
+header h1::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #e94560, transparent);
+    animation: underline 3s ease-in-out infinite;
+}
+
+@keyframes underline {
+    0% { width: 0; left: 0; }
+    50% { width: 100%; }
+    100% { width: 0; left: 100%; }
+}
+
+/* ساعة رقمية */
+.digital-clock {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #fff;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 5px 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.main-container {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.media-panel {
+    flex: 7;
+    background-color: rgba(15, 52, 96, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    border-radius: 15px;
+    margin: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(5px);
+}
+
+.media-panel:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+}
+
+.media-panel::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(233, 69, 96, 0.1) 0%, rgba(15, 52, 96, 0.1) 100%);
+    pointer-events: none;
+    z-index: 1;
+    border-radius: 15px;
+}
+
+.media-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.media-content video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.media-content img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.video-overlay {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    backdrop-filter: blur(5px);
+}
+
+.welcome-message {
+    font-size: 2.8rem;
+    color: #fff;
+    text-align: center;
+    padding: 30px;
+    text-shadow: 0 0 20px rgba(233, 69, 96, 0.8);
+    animation: pulse 3s infinite ease-in-out;
+    position: relative;
+    z-index: 2;
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 1.4;
+    max-width: 80%;
+}
+
+.welcome-message::after {
+    content: '';
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    background: radial-gradient(circle, rgba(233, 69, 96, 0.3) 0%, rgba(233, 69, 96, 0) 70%);
+    border-radius: 50%;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: glow 4s infinite alternate ease-in-out;
+}
+
+@keyframes glow {
+    0% { width: 150px; height: 150px; opacity: 0.5; }
+    100% { width: 300px; height: 300px; opacity: 0.2; }
+}
+
+.orders-panel {
+    flex: 3;
+    max-width: 450px;
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    gap: 15px;
+    position: relative;
+    z-index: 5;
+}
+
+.order-section {
+    flex: 1;
+    background-color: rgba(22, 33, 62, 0.8);
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+
+.order-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.order-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.section-header {
+    padding: 15px;
+    text-align: center;
+    font-size: 1.6rem;
+    font-weight: bold;
+    position: relative;
+    overflow: hidden;
+}
+
+.section-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: shine 3s infinite linear;
+}
+
+@keyframes shine {
+    0% { left: -150%; }
+    100% { left: 150%; }
+}
+
+.preparing-header {
+    background: linear-gradient(90deg, #e94560, #ff6b81);
+    color: white;
+}
+
+.ready-header {
+    background: linear-gradient(90deg, #0f9d58, #00c853);
+    color: white;
+}
+
+.section-header::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: shine 3s infinite;
+}
+
+@keyframes shine {
+    0% { left: -100%; }
+    20% { left: 100%; }
+    100% { left: 100%; }
+}
+
+.order-list {
+    flex: 1;
+    overflow-y: auto;
+    padding: 10px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+.order-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.order-list::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.order-list::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+}
+
+.order-item {
+    background-color: rgba(255, 255, 255, 0.08);
+    margin: 10px 5px;
+    padding: 20px 15px;
+    border-radius: 12px;
+    text-align: center;
+    font-size: 2.8rem;
+    font-weight: bold;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(3px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 120px;
+}
+
+.order-item-image {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    margin-bottom: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.order-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 5px;
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+.order-item-detail {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 3px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* تأثير دخول العناصر الجديدة */
+.order-item-detail.new-item {
+    animation: slideInRight 0.5s ease-out forwards;
+}
+
+@keyframes slideInRight {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}
+
+.order-item-detail img {
+    width: 25px;
+    height: 25px;
+    border-radius: 4px;
+    object-fit: cover;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.item-name {
+    font-weight: 600;
+    color: #fff;
+}
+
+.item-quantity {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.order-number {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.order-time {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin-bottom: 3px;
+}
+
+.estimated-time {
+    font-size: 1.1rem;
+    color: #ff6b81;
+    font-weight: bold;
+    padding: 5px 10px;
+    background-color: rgba(255, 107, 129, 0.1);
+    border-radius: 8px;
+    margin-top: 5px;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.ready-message {
+    font-size: 0.9rem;
+    color: #00c853;
+    font-weight: bold;
+    margin-top: 3px;
+}
+
+.moving-out {
+    animation: moveOut 0.5s forwards;
+    opacity: 0;
+    transform: translateY(-20px) scale(0.8);
+}
+
+@keyframes moveOut {
+    0% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.8);
+    }
+}
+
+.preparing-item {
+    color: #ff6b81;
+    border-left: 4px solid #e94560;
+    background: linear-gradient(135deg, rgba(233, 69, 96, 0.1) 0%, rgba(255, 107, 129, 0.05) 100%);
+}
+
+.ready-item {
+    color: #00c853;
+    border-left: 4px solid #0f9d58;
+    animation: pulse 1.5s infinite ease-in-out;
+    background: linear-gradient(135deg, rgba(15, 157, 88, 0.1) 0%, rgba(0, 200, 83, 0.05) 100%);
+}
+
+.order-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 100%);
+    pointer-events: none;
+}
+
+.order-item:hover {
+    transform: translateY(-5px) scale(1.03);
+    background-color: rgba(255, 255, 255, 0.15);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+/* Animations */
+@keyframes pulse {
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.03); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
+    to { text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 20px rgba(233, 69, 96, 0.8); }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+.new-order {
+    animation: fadeIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards, highlightNew 2s ease-in-out;
+}
+
+/* تأثير إبراز العناصر الجديدة */
+@keyframes highlightNew {
+    0% { box-shadow: 0 0 20px rgba(46, 204, 113, 0.8); }
+    50% { box-shadow: 0 0 30px rgba(46, 204, 113, 0.6); }
+    100% { box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.media-content img, .media-content video {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    animation: float 8s ease-in-out infinite;
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+    .main-container {
+        flex-direction: column;
+    }
+    
+    .media-panel, .orders-panel {
+        flex: none;
+        width: auto;
+        max-width: none;
+    }
+    
+    .media-panel {
+        height: 50vh;
+    }
+    
+    .orders-panel {
+        height: 50vh;
+        flex-direction: row;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        font-size: 14px;
+    }
+    
+    header {
+        padding: 10px;
+    }
+    
+    header h1 {
+        font-size: 1.2rem;
+    }
+    
+    .digital-clock {
+        font-size: 1rem;
+        padding: 5px 10px;
+    }
+    
+    .main-container {
+        padding: 5px;
+    }
+    
+    .media-panel {
+        height: 40vh;
+        margin-bottom: 10px;
+    }
+    
+    .welcome-message {
+        font-size: 1.5rem;
+        padding: 10px;
+    }
+    
+    .orders-panel {
+        flex-direction: column;
+        height: 60vh;
+    }
+    
+    .order-section {
+        margin: 5px 0;
+        padding: 5px;
+    }
+    
+    .section-header {
+        font-size: 1.2rem;
+        padding: 8px;
+    }
+    
+    .order-list {
+        max-height: 25vh;
+    }
+    
+    .order-item {
+        font-size: 1.5rem;
+        padding: 8px;
+        margin-bottom: 8px;
+    }
+    
+    .order-item-image {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .order-items-list {
+        gap: 5px;
+    }
+    
+    .order-item-detail {
+        padding: 5px;
+    }
+    
+    .item-name {
+        font-size: 0.8rem;
+    }
+    
+    .item-quantity {
+        font-size: 0.8rem;
+        padding: 2px 5px;
+    }
+    
+    .order-number {
+        font-size: 1.2rem;
+    }
+    
+    .order-time, .estimated-time {
+        font-size: 0.8rem;
+    }
+    
+    .ready-message {
+        font-size: 1rem;
+        padding: 5px;
+    }
+}
+
+/* تحسينات إضافية للهواتف الصغيرة جدًا */
+@media (max-width: 480px) {
+    .media-panel {
+        height: 30vh;
+    }
+    
+    .orders-panel {
+        height: 70vh;
+    }
+    
+    .welcome-message {
+        font-size: 1.2rem;
+    }
+    
+    .order-item {
+        font-size: 1.2rem;
+        padding: 5px;
+    }
+    
+    .order-item-image {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .order-number {
+        font-size: 1rem;
+    }
+    
+    .order-time, .estimated-time, .item-name, .item-quantity {
+        font-size: 0.7rem;
+    }
+    
+    .ready-message {
+        font-size: 0.9rem;
+    }
+}

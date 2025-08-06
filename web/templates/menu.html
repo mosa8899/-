@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>قائمة الطعام</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1 id="restaurant-name">قائمة الطعام</h1>
+        <div class="header-buttons">
+
+            <div class="cart-button-container">
+                <button id="cart-button">🛒 <span id="cart-count">0</span></button>
+            </div>
+        </div>
+    </header>
+
+    <div id="categories" class="categories-container"></div>
+
+    <main id="product-list" class="product-grid"></main>
+
+    <!-- Cart Modal (Existing) -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">×</span>
+            <h2>سلة الطلبات</h2>
+            <div id="cart-items"></div>
+            <p class="total">الإجمالي: <span id="cart-total">0.00</span></p>
+            <hr>
+            <div id="checkout-section">
+                <button id="confirm-order-button">✅ تأكيد الطلب وإنشاء الرمز</button>
+            </div>
+            <div id="qr-code-section" style="display: none; text-align: center;">
+                <h3>يرجى إظهار هذا الرمز للكاشير</h3>
+                <div id="qrcode"></div>
+                <p>امسح هذا الرمز عند الكاشير لإتمام طلبك.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Detail Modal (NEW) -->
+    <div id="product-detail-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="close-product-detail-modal">×</span>
+            <h2 id="product-detail-name"></h2>
+            <p id="product-detail-price" class="price"></p>
+            
+            <div id="product-detail-media">
+                <!-- صورة أو فيديو المنتج سيتم تحميلها هنا بواسطة JavaScript -->
+            </div>
+            
+            <hr>
+            <h3>الكمية:</h3>
+            <div class="quantity-control">
+                <button id="qty-minus-btn">-</button>
+                <span id="qty-display">1</span>
+                <button id="qty-plus-btn">+</button>
+            </div>
+
+            <hr>
+            <h3>الإضافات:</h3>
+            <div id="product-detail-modifiers" class="modifiers-list">
+                <!-- Modifiers will be loaded here by JavaScript -->
+                <p class="no-modifiers">لا توجد إضافات متاحة لهذا المنتج.</p>
+            </div>
+            <button id="add-to-cart-from-detail" class="add-to-cart-button">أضف إلى السلة</button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>

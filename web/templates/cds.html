@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>شاشة عرض الطلبات للعملاء</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='cds.css') }}">
+    <!-- إضافة الأصوات للإشعارات -->
+    <audio id="new-order-sound" preload="auto">
+        <source src="{{ url_for('static', filename='notification.mp3') }}" type="audio/mpeg">
+    </audio>
+</head>
+<body>
+    <header>
+        <h1 id="restaurant-name">مطعمنا</h1>
+    </header>
+
+    <div class="main-container">
+        <div class="media-panel">
+            <div class="media-content" id="media-content">
+                <div class="welcome-message" id="welcome-message">أهلاً وسهلاً بكم في مطعمنا</div>
+            </div>
+        </div>
+        
+        <div class="orders-panel">
+            <div class="order-section">
+                <div class="section-header preparing-header">🥣 قيد التجهيز</div>
+                <div class="order-list" id="preparing-orders"></div>
+            </div>
+            
+            <div class="order-section">
+                <div class="section-header ready-header">✅ جاهز للاستلام</div>
+                <div class="order-list" id="ready-orders"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='cds.js') }}"></script>
+</body>
+</html>
